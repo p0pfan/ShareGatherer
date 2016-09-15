@@ -49,7 +49,7 @@ public class WeiboTokenImpl implements WeiboToken {
 				log.info("update access from weibo");
 				AccessToken acctks = AccessTokenUtil.getAccessToken();
 				params.put("AccessToken", acctks);
-				params.put("CeateTime", System.currentTimeMillis());
+				params.put("ceateTime", System.currentTimeMillis());
 				accessTokenImpl.update(params, COLLECTION);
 				return acctks;
 			}
@@ -71,7 +71,7 @@ public class WeiboTokenImpl implements WeiboToken {
 		if(accessTokenImpl.findOne(params, COLLECTION)!=null){
 			AccessToken acctks = AccessTokenUtil.getAccessToken();
 			params.put("AccessToken", acctks);
-			params.put("CeateTime", System.currentTimeMillis());
+			params.put("ceateTime", System.currentTimeMillis());
 			accessTokenImpl.update(params, COLLECTION);
 		}
 		AccessTokens newATS =null;

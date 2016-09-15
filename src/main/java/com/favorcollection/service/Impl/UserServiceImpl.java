@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService{
 		UserInfo iuser =new UserInfo();
 		AccessToken token = wt.getAccessToken("c_c1227@163.com");
 		String access_token = token.getAccessToken();
+		log.info(access_token);
 		String uid = token.getUid();
 		User user = null;
 		Users um = new Users(access_token);
