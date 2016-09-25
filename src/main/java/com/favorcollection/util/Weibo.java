@@ -143,9 +143,12 @@ public class Weibo {
 			String loginUrl2 = "" ;
 			String loginHtml2 = "" ;
 			
-			Pattern pattern1 = Pattern.compile("location.replace\\('(.*?)'\\);");
+//			Pattern pattern1 = Pattern.compile("location.replace\\('(.*?)'\\);");
+			Pattern pattern1 = Pattern.compile("location.replace\\(.*");
+			
 			Matcher m1 = pattern1.matcher(loginHtml1);
 			if (m1.find()) {
+				System.out.println(m1.toString());
 				loginUrl2=m1.group(1);
 				logger.info("第2次登录请求url："+loginUrl2);
 			}

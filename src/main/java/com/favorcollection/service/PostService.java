@@ -8,5 +8,6 @@ import com.favorcollection.pojo.EmailSource;
 public interface PostService {
 		public void storeEmailSource(EmailSource info);
 		public List<GatheredInfo> showShares();
+		
 
 }

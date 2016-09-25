@@ -71,7 +71,7 @@ public class WeiboTokenImpl implements WeiboToken {
 		if(accessTokenImpl.findOne(params, COLLECTION)!=null){
 			AccessToken acctks = AccessTokenUtil.getAccessToken();
 			params.put("AccessToken", acctks);
-			params.put("ceateTime", System.currentTimeMillis());
+			params.put("createTime", System.currentTimeMillis());
 			accessTokenImpl.update(params, COLLECTION);
 		}
 		AccessTokens newATS =null;

@@ -1,17 +1,16 @@
 package com.favorcollection.pojo;
 
-import java.util.Date;
 
 public class ShareShow {
-	private Date createdAt;
+	private String createdAt;
 	private long id;
 	private String text;
 	private ShareShow shareShow;
-	private Weibouser weiboUser;
-	public Date getCreatedAt() {
+	private User user;
+	public String getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 	public long getId() {
@@ -32,11 +31,11 @@ public class ShareShow {
 	public void setShareShow(ShareShow shareShow) {
 		this.shareShow = shareShow;
 	}
-	public Weibouser getWeiboUser() {
-		return weiboUser;
+	public User getUser() {
+		return user;
 	}
-	public void setWeiboUser(Weibouser weiboUser) {
-		this.weiboUser = weiboUser;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

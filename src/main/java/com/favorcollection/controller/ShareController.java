@@ -21,6 +21,7 @@ import com.favorcollection.model.GatheredInfo;
 import com.favorcollection.pojo.ShareShow;
 import com.favorcollection.pojo.Weibouser;
 import com.favorcollection.service.PostService;
+import com.favorcollection.service.Impl.StoreShareImpl;
 import com.favorcollection.service.Impl.WeiboTokenImpl;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
@@ -40,7 +41,7 @@ public class ShareController {
 	private PostService postService;
 	
 	@Autowired
-	private WeiboTokenImpl weiboTokenImpl;
+	private StoreShareImpl ssi;
 	
 	@RequestMapping(value = "/all" , method = RequestMethod.GET)
 	public @ResponseBody List<GatheredInfo> showShares(){
@@ -52,25 +53,26 @@ public class ShareController {
 	 * http://josh-persistence.iteye.com/blog/2085015
 	 */
 	@RequestMapping(value = "/weibo" , method = RequestMethod.GET,produces="application/json;charset=utf-8")
-	public  @ResponseBody String getWeiboShare() throws UnsupportedEncodingException, ClientHandlerException, UniformInterfaceException{
-		AccessToken accesstoken = weiboTokenImpl.getAccessToken("c_c1227@163.com");
-		Client client = Client.create(); 
-		WebResource webResource = client
-				   .resource("https://api.weibo.com/2/comments/mentions.json");
-		ClientResponse response = webResource
-				.queryParam("access_token",accesstoken.getAccessToken())
-				.queryParam("since_id","-1473900000")
-				.queryParam("max_id","0")
-				.queryParam("count","50")
-				.queryParam("page","1")
-				.queryParam("filter_by_author","0")
-				.queryParam("filter_by_source","0")
-				.get(ClientResponse.class);
-		String xx = response.getEntity(String.class);
-		JSONObject json = new JSONObject(xx);
-		JSONArray ja = json.getJSONArray("comments");
-		
-		return ja.toString();
+	public  @ResponseBody Object getWeiboShare() throws UnsupportedEncodingException, ClientHandlerException, UniformInterfaceException{
+//		AccessToken accesstoken = weiboTokenImpl.getAccessToken("c_c1227@163.com");
+//		Client client = Client.create(); 
+//		WebResource webResource = client
+//				   .resource("https://api.weibo.com/2/comments/mentions.json");
+//		ClientResponse response = webResource
+//				.queryParam("access_token",accesstoken.getAccessToken())
+//				.queryParam("since_id","-1473900000")
+//				.queryParam("max_id","0")
+//				.queryParam("count","50")
+//				.queryParam("page","1")
+//				.queryParam("filter_by_author","0")
+//				.queryParam("filter_by_source","0")
+//				.get(ClientResponse.class);
+//		String xx = response.getEntity(String.class);
+//		JSONObject json = new JSONObject(xx);
+//		JSONArray ja = json.getJSONArray("comments");
+//		
+//		return ja.toString();
+		return ssi.storeAllShareFromWeibo();
 	}
 
 }
